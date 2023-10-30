@@ -1,5 +1,3 @@
-import sys
-
 BOARD_X = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15']
 BOARD_Y = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P']
 INVALID_LETTERS = ['K']
@@ -150,8 +148,10 @@ if __name__ == '__main__':
     try:
         err_scope = 'J1'
         [board_1, torpedo_list_1] = read_player('jogador1')
+        
         err_scope = 'J2'
         [board_2, torpedo_list_2] = read_player('jogador2')
+        
         resolve_board(board_1, torpedo_list_2)
         resolve_board(board_2, torpedo_list_1)
 
@@ -161,13 +161,16 @@ if __name__ == '__main__':
         if score_1[0] > score_2[0]:
             result_string = generate_result_string(1, score_1)
             write_string_in_result(result_string)
+
         if score_1[0] < score_2[0]:
             result_string = generate_result_string(2, score_2)
             write_string_in_result(result_string)
+
         if score_1[0] == score_2[0]:
             result_string = generate_result_string(1, score_1)
             result_string += f'\n{generate_result_string(2, score_2)}'
             write_string_in_result(result_string)
+
     except Exception as err:
         write_error(f'{err_scope} {str(err)}')
 
